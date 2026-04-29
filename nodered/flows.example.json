@@ -1,0 +1,9 @@
+[
+  {
+    "id": "synthetic-flow",
+    "type": "tab",
+    "label": "Synthetic Kurogane Lab",
+    "disabled": false,
+    "info": "Public synthetic lab flow only"
+  }
+]

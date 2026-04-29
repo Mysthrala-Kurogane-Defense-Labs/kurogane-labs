@@ -1,0 +1,21 @@
+{
+  "site_id": "site-synthetic-alpha",
+  "assets": [
+    {
+      "asset_id": "pump-1",
+      "type": "pump",
+      "metrics": [
+        "pressure_bar",
+        "temperature_c"
+      ]
+    },
+    {
+      "asset_id": "compressor-1",
+      "type": "compressor",
+      "metrics": [
+        "pressure_bar",
+        "vibration_mm_s"
+      ]
+    }
+  ]
+}

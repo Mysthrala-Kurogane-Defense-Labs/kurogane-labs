@@ -1,0 +1,16 @@
+services:
+  nodered:
+    image: nodered/node-red:latest
+    ports:
+      - "1880:1880"
+    volumes:
+      - ./nodered:/data/public-examples:ro
+    environment:
+      - NODE_RED_ENABLE_PROJECTS=false
+
+  synthetic-plant:
+    image: python:3.12-slim
+    working_dir: /lab
+    volumes:
+      - ./:/lab:ro
+    command: ["python", "synthetic-plant/generate_events.py", "--once"]
