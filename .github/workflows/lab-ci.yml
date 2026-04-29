@@ -1,0 +1,35 @@
+name: Lab CI
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate-lab:
+    name: Validate synthetic lab
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validate Docker Compose
+        run: docker compose -f docker-compose.yml config
+
+      - name: Validate Python syntax
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m py_compile synthetic-plant/generate_events.py
+
+      - name: Run synthetic event generator
+        shell: bash
+        run: |
+          set -euo pipefail
+          python synthetic-plant/generate_events.py
+          git diff --exit-code
