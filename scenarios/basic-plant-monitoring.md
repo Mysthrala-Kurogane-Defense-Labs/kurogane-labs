@@ -1,11 +1,23 @@
-# Basic Plant Monitoring
+# Basic plant monitoring
 
-This scenario uses only synthetic data to explain industrial monitoring concepts in the public technical ecosystem around Kurogane Hub.
+## Run
 
-## Goal
+From the repository root, after installing `requirements-dev.txt`:
 
-Show how operators can reason about operational risk and visibility without exposing production Kurogane Hub logic or connecting to real industrial systems.
+```sh
+python synthetic-plant/generate_events.py --scenario basic-plant-monitoring > events.jsonl
+python tools/event_contract.py events.jsonl
+python tools/analyze_events.py events.jsonl
+```
 
-## Safety Boundary
+## Expected output
 
-Do not connect this scenario to real PLC, SCADA, OT, IT, or customer environments.
+2 asset registrations, 2 pressure measurements and 1 warning alarm. Repeated runs produce the same events and identifiers. Do not concatenate runs without renaming IDs; duplicate IDs are deliberately rejected by the analyzer.
+
+## Exercise
+
+Review the asset IDs and units. Identify the owner who would verify each source and the person who would review the alarm.
+
+## Boundary
+
+Synthetic local files only. No command reaches a PLC, Hub endpoint or industrial network. The output verifies the exercise, not a control implemented in a real installation.

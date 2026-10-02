@@ -1,5 +1,5 @@
-# OpenPLC Notes
+# OpenPLC extension boundary
 
-This directory is reserved for public OpenPLC-oriented lab notes. The current lab does not require OpenPLC to run.
+No OpenPLC runtime, program or connection is included. The folder records a possible future isolated simulation exercise only.
 
-Any future OpenPLC material must use synthetic logic only and must not be connected to real PLCs or production plant equipment.
+An extension would need an explicitly versioned runtime, a synthetic program, a separate local network, a documented read-only observation path and tests proving that no real controller can be reached. Do not infer those controls from the presence of this directory. Use the Python scenarios for the currently executable lab.
